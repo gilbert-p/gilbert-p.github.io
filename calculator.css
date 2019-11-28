@@ -1,5 +1,5 @@
 :root {
-    --main-bg-color: #1A1A1A;
+    --main-bg-color: #25A3DA;
     --num-color: #4F99D9;
 }
 
@@ -10,6 +10,11 @@
     font-weight: bold;
     font-size: 22px;
     color: #ffffff;
+}
+
+body {
+    background: #25A3DA;
+
 }
 
 .title {
@@ -25,15 +30,21 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+
 }
 
 .calculator {
-    height: 500px;
+    position: absolute;
+    height: 550px;
     width: 300px;
-    background-color: var(--main-bg-color);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-image: linear-gradient(to right bottom, #1e1c1e, #222123, #272629, #2b2b2e, #2f3034);
     display: grid;
     grid-template-rows: 16.7% 16.7% 16.7% 16.7% 16.7%;
     grid-template-columns: 100%;
+    border-radius: 10px;
 }
 
 .flex-container {
@@ -50,18 +61,23 @@
 
 .view {
     width: 87%;
-    height: 50px;
-    /* background-color: #bbbbbb; */
+    height: 70px;
+    background-color: #A2AF77;
     border-radius: 5px;
-    padding-top: 5px;
-    color: var(--num-color);
-    font-size: 1.6em;
+    color: black;
+}
+
+.text-view {
+    position: relative;
+    padding: 5px;
+    top: 10px;
+    font-size: 1.5em;
 }
 
 .calcBtn {
     width: 60px;
     height: 60px;
-    background-color: #20282E;
+    background-color: #130F10;
     text-align: center;
     padding-top: 17px;
     border-radius: 5px;
@@ -74,7 +90,11 @@
 }
 
 .numBtn {
-    background-color: var(--main-bg-color);
+    background-color: #58595B;
+}
+
+#equals {
+    background-color: #F15A2B;
 }
 
 #clear {
@@ -88,10 +108,7 @@
 
 /* Mobile Styles */
 @media only screen and (max-width: 420px) {
-    body {
-        background-color: #F09A9D;
-        /* Red */
-    }
+
 
     .calculator {
         width: 90vw;

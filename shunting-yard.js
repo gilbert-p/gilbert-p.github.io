@@ -1,10 +1,7 @@
 //Example input "4+18/(9-3)"
 //Example output "4,18,9,3,−,/,+"
 
-//Input as represented in Token Array
-let tokenArray_2 = ["(", "5", "+", "3", ")", "x", "3"];
-let tokenArray = ["(", "3", "x", "4", "/", "(", "2", "+", "5", ")", ")"];
-let tokenArray_3 = ["4", "+", "18", "/", "(", "9", "-", "3", ")"];
+
 
 // let tokenArray = ["4", "x", "18", "+", "9", "-", "3"];
 
@@ -38,12 +35,10 @@ const getPrecedence = (operator) => {
 }
 
 
-const postFix = () => {
-    let result = "";
+const postFix = (tokenArray) => {
     //output queue does not contain the parentheses operators
-    let output_length = tokenArray.length;
+
     let temp_tokenArray = [...tokenArray];
-    let loop_iterations = 0;
 
     let test_loop = 0;
 
@@ -55,7 +50,6 @@ const postFix = () => {
 
         if (checkIfNumber(currentToken)) {
             outputQueue.push(currentToken);
-            console.log(`1st Input: ${outputQueue}`);
         } else {
 
 
@@ -83,22 +77,24 @@ const postFix = () => {
                         //Add token back to beginning of token array
                         temp_tokenArray.unshift(currentToken);
 
+                    } else if (getPrecedence(operators[operators.length - 1]) == getPrecedence(currentToken)) {
+                        let op = operators.pop();
+                        outputQueue.push(op);
+
+                        //Add token back to beginning of token array
+                        temp_tokenArray.unshift(currentToken);
                     } else {
+                        console.log("greater precedence: " + currentToken);
                         operators.push(currentToken);
+                        console.log(operators);
                     }
 
 
                 } else {
+                    console.log(" push reg token: " + currentToken);
                     operators.push(currentToken);
                 }
             }
-
-            console.log("outputQueue:");
-            console.log(outputQueue);
-            console.log("operators:");
-            console.log(operators);
-            console.log("\n\n\n");
-
         }
         test_loop++;
     }
@@ -109,18 +105,77 @@ const postFix = () => {
         outputQueue.push(operators.pop());
     }
 
-    console.log("Final Output: ");
-    console.log(outputQueue);
+    let ans = calculate(outputQueue);
+    return ans;
 
-    // console.log("TokenArray: ", temp_tokenArray);
-    // console.log("OperatorStack: ", operators);
-    // console.log("OutputQueue: ", outputQueue);
+}
 
-    // console.log("\n\n\n");
+const calculate = (post_Fix_list) => {
+
+    let number_stack = [];
+
+    for (let ii = 0; ii < post_Fix_list.length; ii++) {
+
+        if (post_Fix_list[ii] == "Infinity") {
+            number_stack = [];
+            number_stack.push("Infinity");
+            return;
+        }
+
+        if (checkIfNumber(post_Fix_list[ii])) {
+            number_stack.push(post_Fix_list[ii]);
+        } else {
+            //It's an operator
+
+            let op = post_Fix_list[ii];
+            let first_input = parseFloat(number_stack.pop());
+            let second_input = parseFloat(number_stack.pop());
+            let result = 0;
+
+            switch (op) {
+                case "+":
+                    result = first_input + second_input;
+                    number_stack.push(result);
+                    console.log("add: " + result);
+                    result = 0;
+                    break;
+                case "-":
+                    result = first_input - second_input;
+                    number_stack.push(result);
+                    console.log("subtract: " + result);
+                    result = 0;
+                    break;
+                case "x":
+                    result = first_input * second_input;
+                    number_stack.push(result);
+                    console.log("multiply: " + result);
+                    result = 0;
+                    break;
+                case "/":
+                    result = second_input / first_input;
+                    //If user divided by Zero
+                    if (!isFinite(result)) {
+                        console.log("You tried to divide by 0");
+                        result.push("Infinity");
+                        break;
+                    }
+                    number_stack.push(result);
+                    console.log("divide: " + result);
+                    result = 0;
+                    break;
+            }
+        }
+    }
+
+    return number_stack[0];
 }
 
 
+//Input as represented in Token Array
+let test_array_1 = ["(", "3", "x", "4", "/", "(", "2", "+", "5", ")", ")"];
+let test_array_2 = ["(", "5", "+", "3", ")", "x", "3"];
+let tokenArray_3 = ["4", "+", "18", "/", "(", "9", "-", "3", ")"];
+let tokenArray_4 = ["4", "/", "2", "x", "3", "+", "1"];
+let tokenArray_5 = ["89", "+", "6"];
 
-
-postFix();
-// console.log(outputQueue);
+// postFix(tokenArray_5);

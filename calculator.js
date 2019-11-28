@@ -1,5 +1,8 @@
+// const calculate_input = require('./shunting-yard');
+
 let tokenArray = [];
 let currentNumber = "";
+let result = 0;
 
 window.addEventListener("DOMContentLoaded", function () {
     let calculatorButtons = document.getElementsByClassName("calcBtn");
@@ -24,6 +27,7 @@ window.addEventListener("DOMContentLoaded", function () {
     const printToView = () => {
         let viewText = "";
 
+
         if (currentNumber.length > 0) {
 
             if (tokenArray.length > 0) {
@@ -31,20 +35,17 @@ window.addEventListener("DOMContentLoaded", function () {
                     viewText += token + " ";
                 });
                 viewText += currentNumber;
-                document.getElementById("view").innerHTML = viewText;
+                document.getElementById("txt-view").innerHTML = viewText;
             } else {
-                document.getElementById("view").innerHTML = currentNumber;
+                document.getElementById("txt-view").innerHTML = currentNumber;
             }
 
         } else {
             tokenArray.forEach(token => {
                 viewText += token + " ";
             });
-            document.getElementById("view").innerHTML = viewText;
+            document.getElementById("txt-view").innerHTML = viewText;
         }
-
-
-
 
         console.log(tokenArray);
     };
@@ -65,24 +66,28 @@ window.addEventListener("DOMContentLoaded", function () {
             printToView();
         } else {
             if (btnInput == "add") {
+                result = 0;
                 tokenArray.push(currentNumber);
                 tokenArray.push("+");
                 currentNumber = "";
             }
 
             if (btnInput == "subtract") {
+                result = 0;
                 tokenArray.push(currentNumber);
                 tokenArray.push("-");
                 currentNumber = "";
             }
 
             if (btnInput == "multiply") {
+                result = 0;
                 tokenArray.push(currentNumber);
                 tokenArray.push("x");
                 currentNumber = "";
             }
 
             if (btnInput == "division") {
+                result = 0;
                 tokenArray.push(currentNumber);
                 tokenArray.push("/");
                 currentNumber = "";
@@ -90,14 +95,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
             if (btnInput == "left-parentheses") {
 
-                // if (checkIfNumber(currentNumber)) {
-                //     tokenArray.push("(");
-                // }
-
                 tokenArray.push("(");
-
-
-
             }
 
             if (btnInput == "right-parentheses") {
@@ -110,13 +108,19 @@ window.addEventListener("DOMContentLoaded", function () {
             }
 
             if (btnInput == "equals") {
+                result = 0;
                 tokenArray.push(currentNumber);
+                result = postFix(tokenArray);
+                tokenArray = [];
+                tokenArray.push(result);
+                result = 0;
                 currentNumber = "";
             }
 
             if (btnInput == "clear") {
                 tokenArray = [];
                 currentNumber = "";
+                result = 0;
             }
         }
         printToView();
