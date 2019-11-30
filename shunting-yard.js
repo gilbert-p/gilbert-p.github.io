@@ -116,15 +116,15 @@ const calculate = (post_Fix_list) => {
 
     for (let ii = 0; ii < post_Fix_list.length; ii++) {
 
-        if (post_Fix_list[ii] == "Infinity") {
-            number_stack = [];
-            number_stack.push("Infinity");
-            return;
-        }
+        // if (post_Fix_list[ii] == "Infinity") {
+        //     number_stack = [];
+        //     number_stack.push("Infinity");
+        //     return;
+        // }
 
         if (checkIfNumber(post_Fix_list[ii])) {
             number_stack.push(post_Fix_list[ii]);
-        } else {
+        } else if (post_Fix_list[ii].length > 0) {
             //It's an operator
 
             let op = post_Fix_list[ii];
@@ -140,15 +140,17 @@ const calculate = (post_Fix_list) => {
                     result = 0;
                     break;
                 case "-":
-                    result = first_input - second_input;
+                    result = second_input - first_input;
                     number_stack.push(result);
                     console.log("subtract: " + result);
                     result = 0;
                     break;
                 case "x":
                     result = first_input * second_input;
+                    console.log("multiply before push: " + result);
                     number_stack.push(result);
-                    console.log("multiply: " + result);
+                    console.log("multiply after push: " + result);
+                    console.log(number_stack);
                     result = 0;
                     break;
                 case "/":
@@ -167,6 +169,12 @@ const calculate = (post_Fix_list) => {
         }
     }
 
+    //Clear for next input
+    outputQueue = [];
+    operators = [];
+    console.log("outer stack: ");
+    console.log(number_stack);
+    console.log("answer returned: ", number_stack[0]);
     return number_stack[0];
 }
 
@@ -176,6 +184,6 @@ let test_array_1 = ["(", "3", "x", "4", "/", "(", "2", "+", "5", ")", ")"];
 let test_array_2 = ["(", "5", "+", "3", ")", "x", "3"];
 let tokenArray_3 = ["4", "+", "18", "/", "(", "9", "-", "3", ")"];
 let tokenArray_4 = ["4", "/", "2", "x", "3", "+", "1"];
-let tokenArray_5 = ["89", "+", "6"];
+let tokenArray_5 = ["(", "89", "+", "6", ")"];
 
 // postFix(tokenArray_5);

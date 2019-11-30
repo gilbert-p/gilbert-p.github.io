@@ -24,6 +24,11 @@ window.addEventListener("DOMContentLoaded", function () {
         return false;
     };
 
+    const input_exists = (input) => {
+        return (input.length > 0) ? true : false;
+    }
+
+
     const printToView = () => {
         let viewText = "";
 
@@ -47,6 +52,7 @@ window.addEventListener("DOMContentLoaded", function () {
             document.getElementById("txt-view").innerHTML = viewText;
         }
 
+        console.log("printing");
         console.log(tokenArray);
     };
 
@@ -64,32 +70,64 @@ window.addEventListener("DOMContentLoaded", function () {
             console.log("true");
             currentNumber += btnInput;
             printToView();
+
         } else {
+            if (btnInput == "dot") {
+                // result = 0;
+                if (input_exists(currentNumber)) {
+                    // tokenArray.push(currentNumber);
+                    // tokenArray.push("+");
+                    currentNumber += ".";
+                } else {
+                    currentNumber = "";
+                }
+            }
+
             if (btnInput == "add") {
                 result = 0;
-                tokenArray.push(currentNumber);
-                tokenArray.push("+");
+                if (input_exists(currentNumber)) {
+                    tokenArray.push(currentNumber);
+                    tokenArray.push("+");
+                } else {
+                    tokenArray.push("+");
+                }
+
                 currentNumber = "";
             }
 
             if (btnInput == "subtract") {
                 result = 0;
-                tokenArray.push(currentNumber);
-                tokenArray.push("-");
+                if (input_exists(currentNumber)) {
+                    tokenArray.push(currentNumber);
+                    tokenArray.push("-");
+                } else {
+                    tokenArray.push("-");
+                }
+
                 currentNumber = "";
             }
 
             if (btnInput == "multiply") {
                 result = 0;
-                tokenArray.push(currentNumber);
-                tokenArray.push("x");
+                if (input_exists(currentNumber)) {
+                    tokenArray.push(currentNumber);
+                    tokenArray.push("x");
+                } else {
+                    tokenArray.push("x");
+                }
+
                 currentNumber = "";
             }
 
             if (btnInput == "division") {
                 result = 0;
-                tokenArray.push(currentNumber);
-                tokenArray.push("/");
+                if (input_exists(currentNumber)) {
+                    tokenArray.push(currentNumber);
+                    tokenArray.push("/");
+                } else {
+                    tokenArray.push("/");
+                }
+
                 currentNumber = "";
             }
 
@@ -109,6 +147,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
             if (btnInput == "equals") {
                 result = 0;
+                console.log("equals");
                 tokenArray.push(currentNumber);
                 result = postFix(tokenArray);
                 tokenArray = [];
