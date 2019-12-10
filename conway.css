@@ -3,7 +3,6 @@
     box-sizing: border-box;
 }
 
-
 .background-image {
     position: absolute;
     width: 100%;
@@ -13,8 +12,6 @@
 
 .board-container {
     position: absolute;
-    width: calc(100% - 100px);
-    width: calc(100% - 100px);
     background-color: lightcoral;
     left: 50%;
     top: 50%;
@@ -35,6 +32,8 @@
 .cell-grid {
     position: relative;
     display: inline-grid;
+    ;
+    height: inherit;
     grid-template-rows: auto;
     grid-template-columns: auto;
     overflow: visible;
@@ -51,15 +50,12 @@
 }
 
 .action-menu {
-    position: relative;
+    position: absolute;
     border-radius: 50%;
     background-color: rgb(255, 255, 255);
     opacity: 0.65;
-    display: flex;
-    left: -100px;
-    top: calc(475px);
-    height: 100%;
-    /* transform: translateX(-50%); */
+    left: calc(100% - 90px);
+    top: calc(100% - 90px);
     justify-content: center;
     flex-direction: column;
     border: 2px solid black;
@@ -102,4 +98,15 @@
     height: 13px;
     margin: 1px; */
     background-color: #333333;
+}
+
+
+/* Portrait */
+@media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+    .cell {
+        position: relative;
+        width: 15px;
+        height: 15px;
+        margin: 1px;
+    }
 }
