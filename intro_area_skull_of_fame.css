@@ -1,0 +1,24 @@
+.intro-area-skull-of-fame-card-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* background-color: lightsalmon; */
+    top: calc(100vh);
+}
+
+.skull-of-fame-card {
+    position: absolute;
+    width: 576px;
+    height: 732px;
+    border: 6px solid #857550;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+#skull-background {
+    position: fixed;
+    width: 100%;
+    background-repeat: no-repeat;
+}

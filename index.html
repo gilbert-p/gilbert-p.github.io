@@ -6,38 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <script src="https://kit.fontawesome.com/7b09121c77.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="./conway.css" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="site_header.css" />
+    <link rel="stylesheet" href="girl_splash.css" />
+    <link rel="stylesheet" href="intro_area_skull_of_fame.css" />
+    <link rel="stylesheet" href="process_intro_area.css" />
 
-    <title>Epoxi's Game of life errr...</title>
+    <title>Gilbert's Skateboards</title>
 </head>
 
 <body>
 
-    <div class="background-image">
+    <div class="main-container">
 
-        <div class="board-container">
+        <img id="skull-background" src="/images/skull_of_fame.jpg" style="background-repeat: no-repeat" />
 
-            <div class="board">
-                <div class="cell-grid" id="game-board"></div>
+        <div class="site-header-container">
+            <div class="menu-button">
+                <span class="line" id="line-1"></span>
+                <span class="line" id="line-2"></span>
+                <span class="line" id="line-3"></span>
             </div>
-
-            <div class="action-menu">
-                <div class="play-button" id="play">
-                    <i class="far fa-play-circle fa-5x" id="play-icon"></i>
-                </div>
-                <div class="randomize"></div>
-                <div class="reset"></div>
+        </div>
+        <div class="girl-splash-container">
+            <div class="girl-logo-container">
+                <!-- <div class="girl-logo-border"></div> -->
+                <img id="girl-logo" src="/images/girl-skateboard-logo-17A304E62C-seeklogo.com.png" alt="girl-logo"
+                    style="width:45%; height:45%;" />
+                <div class="girl-logo"></div>
             </div>
+        </div>
+
+        <div class="intro-area-skull-of-fame-card-container">
+            <div class="skull-of-fame-card"></div>
+        </div>
+
+        <div class="process-intro-area">
 
         </div>
 
     </div>
 
 
-    <script src="conway.js"></script>
-    <script src="draw_grid.js"></script>
-    <script src="actions.js"></script>
+
 </body>
 
 </html>
