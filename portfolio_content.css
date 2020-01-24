@@ -12,6 +12,44 @@
   /* background-color: black; */
 }
 
+#card-detail {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  color: white;
+  top: 0;
+  left: 0;
+}
+
+.layout-overlay {
+  position: absolute;
+  width: 92%;
+  height: 95%;
+  top: 0;
+  left: 0;
+  opacity: 0.3;
+}
+
+#game-of-life {
+  background-color: #4b1357;
+}
+
+#calculator {
+  background-color: #00566e;
+}
+
+#codepens {
+  height: 72%;
+  width: 96%;
+  background-color: #005523;
+}
+
+code {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
 #content-container {
   background-color: white;
   margin-top: -35px;
