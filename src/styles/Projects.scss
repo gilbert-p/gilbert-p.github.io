@@ -1,0 +1,481 @@
+@import "./UtilityStyles.scss";
+
+$border-color: rgb(202, 200, 200);
+
+@mixin center-frame-img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+p {
+  color: white;
+}
+
+.section-container {
+  position: relative;
+  width: calc(100vw - 4em);
+  height: 500px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 3.5em;
+  margin-bottom: 4em;
+}
+
+.section-header {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 45px;
+  margin-top: 2em;
+  //   background-color: salmon;
+
+  > h3 {
+    margin-top: 2px;
+    align-self: center;
+    color: white;
+    font-size: 1.7em;
+    left: 20px;
+  }
+}
+
+i + h3 {
+  position: relative;
+}
+
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  width: 100%;
+  height: 100%;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+}
+
+
+.content-block {
+  display: flex;
+  width: 30vw;
+  height: 100%;
+  background: initial;
+  border: 2px solid $border-color;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.background-container {
+  position: relative;
+  width: 100%;
+}
+
+.description-block {
+  position: relative;
+  width: inherit;
+  height: 120px;
+  background-color: black;
+  top: 75%;
+  transition: top 0.8s;
+  padding: 15px 5px 0 10px;
+
+  h2 {
+    position: relative;
+    color: white;
+    top: -5px;
+  }
+}
+
+.content-block{
+}
+
+
+.slide-container {
+  position: fixed;
+  width: 80vw;
+  height: 80vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 901;
+  border: 3px solid white;
+  overflow: hidden;
+
+
+  > div {
+  }
+
+}
+
+.react-slideshow-container {
+    svg {
+      width: 100px;
+      height: 100px;
+      fill: white;
+      stroke: black;
+    }
+}
+
+.close-button {
+  position: absolute;
+  left: 93%;
+  top: 5%;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(255, 0, 0, 0.761);
+  border: 2px solid white;
+  z-index: 903;
+  border-radius: 50%;
+  opacity: 0.8;
+  box-shadow:inset 0 0 0px 0px rgba(255, 0, 0, 0.761);
+  transition: box-shadow 2s;
+
+  > p {
+    display: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 5px 5px rgba(255, 0, 0, 1);
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(45deg);
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: 80%;
+    height: 2px;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) rotate(-45deg);
+  }
+}
+
+.each-slide > div {
+  margin: 0 auto;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: black;
+  height: 80vh;
+  width: 100%;
+}
+
+.each-slide span {
+  padding: 20px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
+}
+
+.background-mobile {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+
+.container {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 50vh;
+  min-height: 400px;
+  min-width: 728px;
+  z-index: 902;
+
+  .close-button {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+.duo-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border: 2px solid $border-color;
+
+  .gif-container {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: black;
+  }
+
+  .description-block {
+    position: unset;
+    flex-shrink: 1.2;
+    width: 100%;
+    height: 100%;
+    padding-top : 125px;
+
+    p {
+      position: relative;
+      top: 10px;
+    }
+  }
+}
+
+.icon-link {
+  position: relative;
+  top: 50px;
+  width: 220px;
+  padding: 10px 0px 10px 10px;
+  color: white;
+  border: 2px solid white;
+  border-radius: 20px;
+  transition: all 0.5s;
+
+  
+  &:hover {
+    cursor: pointer;
+    border-color: rgb(0, 255, 123);
+    box-shadow: 
+    0px 0px 1px 1px rgb(0, 255, 123), 
+    0px 0px 2px 2px rgb(0, 255, 123),
+    0px 0px 3px 3px rgb(0, 255, 123);
+    color: rgb(0, 255, 123);
+  }
+
+
+  > span {
+    font-size: 1.6rem;
+    font-weight: 600;
+
+
+  }
+}
+
+
+.gg-arrow-top-right-r {
+  display: inline-block;
+  left: 20px;
+  transform: scale(1.7);
+}
+
+.gg-if-design {
+  // display: inline-block;
+  color: white;
+  transform: scale(1.7);
+  top: 17px;
+  left: 10px;
+}
+
+.gg-image {
+  color: white;
+  transform: scale(1.7);
+  top: 17px;
+  left: 10px;
+}
+
+
+.react-slideshow-container >button >svg {
+  width: 75px;
+  height: 75px;
+  fill: rgb(99, 99, 99);
+  stroke: rgb(206, 206, 206);
+  border-radius: 50px;
+}
+
+.react-slideshow-container >button[data-type="next"] >svg {
+  margin-right: 30px;
+
+}
+
+.react-slideshow-container >button[data-type="prev"] >svg {
+  margin-left: 30px;
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+
+  .react-slideshow-container >button >svg {
+    width: 50px;
+    height: 50px;
+  }
+
+  .react-slideshow-container >button[data-type="next"] >svg {
+    margin-right: 10px;
+  
+  }
+  
+  .react-slideshow-container >button[data-type="prev"] >svg {
+    margin-left: 10px;
+  }
+
+
+  .close-button {
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px !important;
+    height: 30px !important;
+    border-radius: 30px;
+    border: 2px solid white;
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0.733);
+
+    > p {
+      padding-top: 3px;
+      display: inline-block;
+      font-size: 1rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    &:hover {
+      box-shadow: initial;
+    }
+
+    &:before, &:after {
+      display: none;
+    }
+  }
+
+ 
+  .background-mobile {
+    display: inline-block;
+  }
+
+  .content-container {
+    flex-direction: column;
+  }
+  .content-block {
+    display: flex;
+    width: 100%;
+    margin: 20px 0 0 0;
+    background-image: none !important;
+    flex-direction: row-reverse;
+  }
+
+  .description-block {
+    position: relative;
+    top: 0;
+    width: 70%;
+    
+    h2 {
+      font-size: 1rem;
+    }
+
+    p {
+      margin-top: 5px;
+      font-size: 0.7rem;
+      padding-right: 5px;
+    }
+  }
+
+  .container {
+    min-width: initial;
+    min-height: initial;
+    width: 90vw;
+    height: 85vh;
+
+    .duo-container {
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+
+      .gif-container {
+        flex-shrink: 0.7;
+      }
+
+      .description-block {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-shrink: 1;
+        padding-top: 20px;
+
+
+        > p, h2{
+          position: relative;
+          display: inline-block;
+          width: fit-content;
+          left: 50%;
+          top: 0;
+          transform: translateX(-50%);
+          text-align: center;
+          font-size: 1rem;
+        }
+
+        .icon-link {
+          top: 30px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 165px;
+          padding: 7px 0px 7px 7px;
+
+          > span {
+            font-size: 1.1rem;
+
+          }
+        }
+        
+      }
+    }
+  }
+
+  .gg-arrow-top-right-r {
+    transform: scale(1.3);
+  }
+
+}
+
+.amzn_dsp_1 {
+  background-image: url("../assets/Web_Design_TempCulb.png");
+  @include center-frame-img;
+}
+
+.amzn_dsp_2 {
+  background-image: url("../assets/Web_Design_GinaCulb.png");
+  @include center-frame-img;
+}
+
+.mdl {
+  background-image: url("../assets/Web_Design_MDL.png");
+  @include center-frame-img;
+}
+
+.transistor_sword {
+  background-image: url("../assets/transistor_sword.png");
+  background-position: center;
+  background-size: 85%;
+  background-repeat: no-repeat;
+}
+
+.airplane {
+  background-image: url("../assets/airplane.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.psp_voxel {
+  background-image: url("../assets/tm_flower_frame.png");
+  background-position: 50% 25%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

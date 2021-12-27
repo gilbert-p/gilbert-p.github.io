@@ -1,0 +1,108 @@
+@import "./UtilityStyles.scss";
+
+#skills-section {
+  height: auto;
+}
+
+.section-header {
+  position: relative;
+  display: flex;
+  width: auto;
+  height: 45px;
+  margin-top: 2em;
+  > h3 {
+    margin-left: 0.5em;
+    margin-top: 2px;
+    align-self: center;
+    color: white;
+    font-size: 1.7em;
+  }
+}
+
+.section-container {
+  position: relative;
+  width: calc(100vw - 4em);
+  left: 50%;
+  transform: translateX(-50%);
+  padding-bottom: 3.5em;
+  margin-bottom: 4em;
+
+  &:after {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.5;
+    z-index: -1;
+  }
+
+  figure {
+    width: 50px;
+
+    > img {
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  > ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-gap: 1rem;
+    margin: 0;
+    padding: 0;
+
+    > li {
+      display: flex;
+      margin-top: 1em;
+      justify-content: flex-start;
+      border: 1px solid rgb(202, 200, 200);
+      border-radius: 0.5rem;
+      padding-top: 15px;
+      padding-bottom: 10px;
+
+      div > h6:first-child {
+        color: white;
+        font-size: 0.775rem;
+      }
+
+      div > h6:last-child {
+        color: white;
+        font-size: 0.7rem;
+        margin-top: 0.4rem;
+        font-weight: normal;
+      }
+
+      > *:nth-child(n) {
+        margin-left: 1.2rem;
+      }
+    }
+  }
+}
+
+li {
+  list-style: none;
+}
+
+
+#tools-icon {
+  position: relative;
+  margin: 0.2rem;
+  width: 20px;
+  height: 100%;
+  align-self: center;
+  fill: white;
+}
+
+@media only screen and (max-width: 420px) {
+  .skills-container {
+    transform: translateX(-55%);
+    > ul {
+      margin-left: -0.5em;
+    }
+  }
+}
